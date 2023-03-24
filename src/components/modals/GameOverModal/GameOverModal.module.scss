@@ -1,0 +1,19 @@
+.modal {
+  @apply flex max-w-xs items-center;
+}
+
+.body {
+  @apply flex flex-col items-center text-center;
+}
+
+.title {
+  @apply mb-2 text-3xl font-bold;
+}
+
+.description {
+  @apply mb-8 text-lg leading-tight text-slate-400;
+}
+
+.buttons {
+  @apply flex w-full flex-col gap-2;
+}

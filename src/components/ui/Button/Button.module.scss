@@ -1,0 +1,27 @@
+button.button {
+  @apply rounded py-3 px-8 font-bold drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
+
+  &:hover {
+    @apply bg-slate-900 bg-opacity-5;
+  }
+
+  &:active {
+    @apply bg-opacity-10;
+  }
+
+  &_lg {
+    @apply rounded-lg px-5 py-4 text-3xl;
+  }
+
+  &_primary {
+    @apply bg-blue-500 text-white;
+
+    &:hover {
+      @apply bg-blue-600;
+    }
+
+    &:active {
+      @apply bg-blue-700;
+    }
+  }
+}

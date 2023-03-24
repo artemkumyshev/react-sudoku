@@ -1,0 +1,33 @@
+.winning {
+  @apply relative w-full rounded-lg bg-gradient-to-b from-cyan-500 to-blue-500 pb-[100%] drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
+}
+
+.wrapper {
+  @apply absolute inset-0 flex items-center justify-center overflow-hidden rounded-lg;
+}
+
+.confetti {
+  &__item {
+    @apply absolute w-full;
+
+    &_1 {
+      @apply -top-12 -right-4;
+    }
+
+    &_2 {
+      @apply -top-16 -left-4;
+    }
+  }
+}
+
+.main {
+  @apply flex flex-col items-center gap-2 text-white;
+}
+
+.title {
+  @apply text-5xl font-bold;
+}
+
+.description {
+  @apply text-2xl;
+}

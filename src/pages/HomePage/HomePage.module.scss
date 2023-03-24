@@ -1,0 +1,71 @@
+.page {
+  @apply m-auto w-full max-w-5xl py-20 px-10;
+}
+
+.wrapper {
+  @apply grid grid-cols-6 gap-8;
+}
+
+.header {
+  @apply col-span-6 flex w-full items-center justify-between text-lg font-medium text-slate-500;
+}
+
+.board {
+  @apply col-span-4;
+}
+
+.panel {
+  @apply col-span-2 flex flex-col gap-4;
+}
+
+.difficulty {
+  @apply flex items-center gap-2;
+
+  &__list {
+    @apply flex gap-1;
+  }
+}
+
+.mistakes {
+  @apply text-slate-900;
+}
+
+.timer {
+  @apply flex w-32 justify-end;
+}
+
+.board-empty {
+  @apply relative;
+
+  &__layout {
+    @apply absolute inset-0 rounded-lg bg-slate-900 bg-opacity-60;
+  }
+
+  &__play {
+    @apply absolute inset-0 m-auto h-20 w-20 rounded-full bg-white p-4 text-blue-500;
+
+    &:hover {
+      @apply bg-slate-100;
+    }
+
+    &:active {
+      @apply bg-slate-200;
+    }
+
+    svg {
+      @apply h-full w-full;
+    }
+  }
+}
+
+.numeric-keyboard {
+  @apply relative;
+
+  &__layout {
+    @apply absolute inset-0 cursor-not-allowed rounded-lg bg-slate-900 opacity-5;
+  }
+}
+
+button.button-start {
+  @apply w-full font-light;
+}
