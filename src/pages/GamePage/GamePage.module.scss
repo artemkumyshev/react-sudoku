@@ -1,28 +1,44 @@
 .page {
-  @apply m-auto w-full max-w-5xl py-20 px-10;
-}
+  @apply flex w-full flex-wrap gap-8;
 
-.wrapper {
-  @apply grid grid-cols-6 gap-8;
+  @screen sm {
+    @apply gap-8;
+  }
 }
 
 .header {
-  @apply col-span-6 flex w-full items-center justify-between text-lg font-medium text-slate-500;
+  @apply flex w-full flex-wrap items-center justify-between gap-x-1 gap-y-2 font-medium text-slate-500;
 }
 
 .board {
-  @apply col-span-4;
+  @apply w-full;
+
+  @screen sm {
+    @apply flex-1;
+  }
 }
 
 .panel {
-  @apply col-span-2 flex flex-col gap-4;
+  @apply flex w-full flex-col gap-4;
+
+  @screen sm {
+    @apply max-w-[14rem] flex-none;
+  }
+
+  @screen xl {
+    @apply max-w-[16rem] flex-none;
+  }
 }
 
 .difficulty {
-  @apply flex items-center gap-2;
+  @apply flex w-full flex-wrap items-center gap-1;
 
-  &__list {
-    @apply flex gap-1;
+  &__title {
+    @apply mr-1;
+  }
+
+  @screen sm {
+    @apply w-auto;
   }
 }
 
@@ -31,7 +47,11 @@
 }
 
 .timer {
-  @apply flex w-32 justify-end;
+  @apply flex;
+
+  @screen lg {
+    @apply w-32 justify-end;
+  }
 }
 
 .board-empty {
@@ -67,5 +87,5 @@
 }
 
 button.button-start {
-  @apply w-full font-light;
+  @apply w-full;
 }

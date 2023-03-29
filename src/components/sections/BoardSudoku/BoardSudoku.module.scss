@@ -1,5 +1,9 @@
 .board {
-  @apply flex w-full flex-col rounded-lg border-4 bg-white drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
+  @apply flex w-full flex-col rounded-lg border-2 bg-white drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
+
+  @screen lg {
+    @apply border-4;
+  }
 }
 
 .row {
@@ -11,7 +15,11 @@
 
   &:nth-child(3),
   &:nth-child(6) {
-    @apply border-b-4;
+    @apply border-b-2;
+
+    @screen lg {
+      @apply border-b-4;
+    }
   }
 }
 
@@ -24,7 +32,11 @@
 
   &:nth-child(3),
   &:nth-child(6) {
-    @apply border-r-4;
+    @apply border-r-2;
+
+    @screen lg {
+      @apply border-r-4;
+    }
   }
 
   &_selected_col,
@@ -49,7 +61,11 @@
 }
 
 .button {
-  @apply absolute left-0 top-0 flex h-full w-full cursor-auto items-center justify-center text-center text-[160%] font-light text-slate-600;
+  @apply absolute left-0 top-0 flex h-full w-full cursor-auto items-center justify-center text-center text-lg font-light text-slate-600;
+
+  @screen lg {
+    @apply text-2xl;
+  }
 
   &:not(:disabled) {
     @apply cursor-pointer text-blue-600;

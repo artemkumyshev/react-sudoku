@@ -1,5 +1,5 @@
 button.button {
-  @apply rounded py-3 px-8 font-bold drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
+  @apply rounded py-3 px-8 drop-shadow-[0_8px_16px_rgba(5,74,183,0.2)];
 
   &:hover {
     @apply bg-slate-900 bg-opacity-5;
@@ -9,19 +9,60 @@ button.button {
     @apply bg-opacity-10;
   }
 
-  &_lg {
-    @apply rounded-lg px-5 py-4 text-3xl;
-  }
-
-  &_primary {
-    @apply bg-blue-500 text-white;
-
-    &:hover {
-      @apply bg-blue-600;
+  &_size {
+    &_extraSmall {
+      @apply px-3 py-2 text-xs;
     }
 
-    &:active {
-      @apply bg-blue-700;
+    &_small {
+      @apply px-3 py-2 text-sm;
+    }
+
+    &_base {
+      @apply px-5 py-2.5 text-sm;
+    }
+
+    &_large {
+      @apply px-5 py-3 text-base;
+    }
+
+    &_extraLarge {
+      @apply px-6 py-3.5 text-base;
+    }
+  }
+
+  &_appearance {
+    &_primary {
+      @apply bg-blue-500 text-white;
+
+      &:hover {
+        @apply bg-blue-600;
+      }
+
+      &:active {
+        @apply bg-blue-700;
+      }
+    }
+
+    &_secondary {
+      @apply border border-slate-900 bg-transparent text-slate-900;
+
+      &:hover,
+      &:active {
+        @apply border-slate-700 text-slate-700;
+      }
+    }
+  }
+
+  &_width {
+    &_full {
+      @apply w-full;
+    }
+  }
+
+  &_rounded {
+    &_full {
+      @apply rounded-full;
     }
   }
 }

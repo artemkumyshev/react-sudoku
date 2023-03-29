@@ -16,7 +16,7 @@ interface Props {
 const BoardSudoku: React.FC<Props> = ({ grid, selectedCell = [0, 0, 0], setSelectedCell }) => (
   <div className={styles.board}>
     {grid.map((row, i) => (
-      <div key={i} className={styles.row}>
+      <div key={i} className={styles.row} data-testid={styles.row}>
         {row.map((cell, j) => (
           <div
             key={j}

@@ -1,13 +1,19 @@
-export type Cell = { value: number; block: number; isVisible: boolean };
-export type DifficultyLevel = 'easy' | 'medium' | 'hard' | 'expert' | 'evil';
-
 export default class Sudoku {
-  // private size = 9;
-  private grid: Cell[][] = [];
-
   private difficulty: DifficultyLevel;
 
+  private size = 9;
+
+  private grid: Cell[][] = [];
+
   private alloweNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  private percentage = {
+    easy: 0.05,
+    medium: 0.3,
+    hard: 0.4,
+    expert: 0.5,
+    evil: 0.6
+  };
 
   constructor(difficulty: DifficultyLevel = 'easy') {
     this.difficulty = difficulty;
@@ -19,9 +25,9 @@ export default class Sudoku {
   }
 
   private generateGrid() {
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < this.size; i++) {
       this.grid[i] = [];
-      for (let j = 0; j < 9; j++) {
+      for (let j = 0; j < this.size; j++) {
         this.grid[i][j] = { value: 0, isVisible: true, block: 0 };
       }
     }
@@ -30,12 +36,12 @@ export default class Sudoku {
   private fillGrid(): void {
     this.generateGrid();
 
-    for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
+    for (let i = 0; i < this.size; i++) {
+      for (let j = 0; j < this.size; j++) {
         let possibleValues = this.alloweNumbers;
 
         // Удалить значения, которые появляются в одной и той же строке или столбце
-        for (let k = 0; k < 9; k++) {
+        for (let k = 0; k < this.size; k++) {
           if (possibleValues.includes(this.grid[i][k].value)) {
             possibleValues = possibleValues.filter((value) => value !== this.grid[i][k].value);
           }
@@ -80,19 +86,19 @@ export default class Sudoku {
         const blockCol = Math.floor(j / 3);
         const blockIndex = blockRow * 3 + blockCol;
         this.grid[i][j].block = blockIndex;
+      }
+    }
 
-        // Set visibility based on difficulty level
-        if (this.difficulty === 'easy' && Math.random() < 0.05) {
-          this.grid[i][j].isVisible = false;
-        } else if (this.difficulty === 'medium' && Math.random() < 0.4) {
-          this.grid[i][j].isVisible = false;
-        } else if (this.difficulty === 'hard' && Math.random() < 0.5) {
-          this.grid[i][j].isVisible = false;
-        } else if (this.difficulty === 'expert' && Math.random() < 0.55) {
-          this.grid[i][j].isVisible = false;
-        } else if (this.difficulty === 'evil' && Math.random() < 0.6) {
-          this.grid[i][j].isVisible = false;
-        }
+    const totalCells = this.size * this.size;
+    let cellsToHide = Math.floor(totalCells * this.percentage[this.difficulty]);
+
+    while (cellsToHide > 0) {
+      const randomIndex = Math.floor(Math.random() * totalCells);
+      const row = Math.floor(randomIndex / this.size);
+      const col = randomIndex % this.size;
+      if (this.grid[row][col].isVisible) {
+        this.grid[row][col].isVisible = false;
+        cellsToHide--;
       }
     }
   }
@@ -101,7 +107,7 @@ export default class Sudoku {
     const { value } = this.grid[row][col];
 
     // Проверить строку и столбец
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < this.size; i++) {
       if (i !== col && this.grid[row][i].value === value) {
         return false;
       }

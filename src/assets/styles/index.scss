@@ -4,9 +4,13 @@
 
 html,
 body {
-  @apply font text-base;
+  @apply font text-[14px];
+
+  @screen md {
+    @apply text-base;
+  }
 }
 
 body {
-  @apply min-h-screen bg-cyan-50 text-slate-600;
+  @apply min-h-screen  bg-slate-900 text-slate-600;
 }

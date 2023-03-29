@@ -1,0 +1,11 @@
+.layout {
+  @apply mx-auto mt-8 w-11/12 rounded-3xl bg-cyan-50 py-8 px-4 drop-shadow-[0_8px_16px_rgba(255,255,255,0.4)];
+
+  @screen sm {
+    @apply max-w-3xl p-10;
+  }
+
+  @screen xl {
+    @apply max-w-4xl;
+  }
+}

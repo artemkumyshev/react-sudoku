@@ -1,0 +1,53 @@
+.display {
+  &_1 {
+    @apply text-6xl;
+  }
+
+  &_2 {
+    @apply text-5xl;
+  }
+
+  &_3 {
+    @apply text-4xl;
+  }
+
+  &_4 {
+    @apply text-3xl;
+  }
+
+  &_5 {
+    @apply text-2xl;
+  }
+
+  &_6 {
+    @apply text-xl;
+  }
+
+  @for $i from 1 through 6 {
+    &_#{$i} {
+      @apply leading-tight tracking-tighter;
+    }
+  }
+}
+
+.text {
+  &_small {
+    @apply text-xs;
+  }
+
+  &_extrasmall {
+    @apply text-sm;
+  }
+
+  &_base {
+    @apply text-base;
+  }
+
+  &_large {
+    @apply text-lg;
+  }
+
+  &_extralarge {
+    @apply text-xl;
+  }
+}

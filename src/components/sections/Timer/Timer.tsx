@@ -3,75 +3,61 @@ import { HiPause, HiPlay } from 'react-icons/hi2';
 
 import { getPadTime } from '@/utils/helpers/getPadTime';
 
+import Typography from '@/components/ui/Typography';
+
 // Styles
 import styles from './Timer.module.scss';
 
 export enum Variants {
   PLAY = 'play',
   PAUSE = 'pause',
-  RESTART = 'restart',
-  ENDTIME = 'endTime'
+  RESTART = 'restart'
 }
 
 interface Props {
-  time?: number;
   variant?: Variants;
   getVariant?: (variant: Variants) => void;
 }
 
-const Timer: React.FC<Props> = ({ time = 5 * 60, variant = Variants.PLAY, getVariant = () => {} }) => {
-  const [timeLeft, setTimeLeft] = React.useState(time);
+const Timer: React.FC<Props> = ({ variant = Variants.PLAY, getVariant = () => {} }) => {
+  const [timeLeft, setTimeLeft] = React.useState(0);
 
   const minutes = getPadTime(Math.floor(timeLeft / 60));
   const seconds = getPadTime(timeLeft - Number(minutes) * 60);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      if (variant === 'play') setTimeLeft((prev) => (prev >= 1 ? prev - 1 : 0));
+      if (variant === 'play') setTimeLeft((prev) => prev + 1);
     }, 1000);
 
-    if (timeLeft === 0) {
-      getVariant(Variants.ENDTIME);
-    }
-
     if (variant === 'restart') {
-      setTimeLeft(time);
+      setTimeLeft(0);
       getVariant(Variants.PLAY);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [variant, timeLeft, time]);
-
-  const handleStart = () => {
-    if (timeLeft === 0) {
-      setTimeLeft(time);
-    }
-
-    getVariant(Variants.PLAY);
-  };
-
-  const handleStop = () => {
-    getVariant(Variants.PAUSE);
-  };
+  }, [variant, timeLeft]);
 
   return (
-    <button
+    <Typography
+      as='button'
       className={styles.timer}
+      text='large'
       onClick={() => {
         if (variant === 'play') {
-          handleStop();
+          getVariant(Variants.PAUSE);
         } else {
-          handleStart();
+          getVariant(Variants.PLAY);
         }
       }}
     >
-      <span className={styles.value}>
+      <span>
         {minutes}:{seconds}
       </span>
       {variant === 'play' ? <HiPause /> : <HiPlay />}
-    </button>
+    </Typography>
   );
 };
 
